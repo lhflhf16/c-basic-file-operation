@@ -1,0 +1,52 @@
+enum Opion
+{
+	EXIT,
+	ADD,
+	DEL,
+	SEARCH,
+	MODIFY,
+	SHOW,
+	SORT
+};
+
+#define MAX_NAME 30
+#define MAX_SEX 5
+#define MAX_TELE 12
+#define MAX_ADDRS 30
+#define MAX_MEMO 10
+
+//好友复杂对象，使用结构体描述
+typedef struct PeoInfo
+{
+	char name[MAX_NAME];
+	int age;
+	char sex[MAX_SEX];
+	char tele[MAX_TELE];
+	char addrs[MAX_ADDRS];
+	char memo[MAX_MEMO];
+}PeoInfo;
+
+//通讯录复杂对象，使用结构体描述(存好友，记录当前好友数量，记录当前空间数量)
+typedef struct contact
+{
+	int size;//好友数量
+	int capacity;//空间数量
+	PeoInfo* data;//维护空间
+}contact;
+
+//库函数声明
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<errno.h>
+
+//函数的声明
+void InitContact(contact* ps);
+void AddContact(contact* ps);
+void ShowContact(const contact* ps);
+void DelContact(contact* ps);
+void SearchContact(const contact* ps);
+void ModifyContact(contact* ps);
+void SortContact(contact* ps);
+void DestroyContact(contact* ps);
+void SaveContact(contact* ps);
